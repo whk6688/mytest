@@ -1,39 +1,37 @@
 export async function onRequestPost({ request }) {
   const { text, pms } = await request.json();
-  const body = `接下来的回答请使用中文，我的问题是：${text}`
-  const res = await fetch("https://yesnotarot.org/", {
+  const body = {
+    "messages": [
+      {
+        "role": "system",
+        "content": `现在你是塔罗牌大师，根据我所选的牌去根据问题去解析，使用的是22张大阿尔克那牌，{"0": "愚者","1": "魔术师","2": "女祭司","3": "皇后","4": "皇帝","5": "教皇","6": "恋人","7": "战车","8": "力量","9": "隐士","10": "命运之轮","11": "正义","12": "倒吊人","13": "死神","14": "节制","15": "恶魔","16": "塔","17": "星星","18": "月亮","19": "太阳","20": "审判","21": "世界"}，下面我将以数组的形式给你卡牌，其中isReversed代表是否为逆位，no为从 0 到 21 对应的22张大阿尔克那牌，你在解析的时候，需要把0-21用22张大阿尔克那牌对应的名称回答，你只需要解释卡牌的含义及解析，最后结尾用百分比表示问题的概率，不用回答多余的话`
+      },
+      {
+        "role": "user",
+        "content": `卡牌数组是：${JSON.stringify(pms)}，问题是：'${text}？'，请帮我解析`
+      }
+    ],
+    "stream": false,
+    "model": "glm-4-flash",
+    "temperature": 0,
+    "presence_penalty": 0,
+    "frequency_penalty": 0,
+    "top_p": 1
+  }
+  const res = await fetch("https://nas-ai.4ce.cn/v1/chat/completions", {
     "headers": {
-      ...request.headers,
-      "accept": "text/x-component",
-      "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,es;q=0.7,ja;q=0.6,fr;q=0.5,id;q=0.4,ar;q=0.3,hi;q=0.2,ko;q=0.1,th;q=0.1,fil;q=0.1,vi;q=0.1,ru;q=0.1,zh-TW;q=0.1",
-      "content-type": "text/plain;charset=UTF-8",
-      "next-action": "c24aaf341eb96d9ae49d7f969287623fd7998239",
-      "next-router-state-tree": "%5B%22%22%2C%7B%22children%22%3A%5B%5B%22locale%22%2C%22zh%22%2C%22d%22%5D%2C%7B%22children%22%3A%5B%22__PAGE__%3F%7B%5C%22locale%5C%22%3A%5C%22zh%5C%22%7D%22%2C%7B%7D%5D%7D%5D%7D%2Cnull%2Cnull%2Ctrue%5D",
-      "priority": "u=1, i",
-      "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+      "accept": "application/json, text/event-stream",
+      "authorization": "Bearer sk-L8W2WtnCtdwG6nctF975D0E770144dE5Be3123Fa16720a03",
+      "content-type": "application/json",
+      "sec-ch-ua": "\"Not A(Brand\";v=\"8\", \"Chromium\";v=\"132\", \"Google Chrome\";v=\"132\"",
       "sec-ch-ua-mobile": "?0",
-      "sec-ch-ua-platform": "\"Windows\"",
-      "sec-fetch-dest": "empty",
-      "sec-fetch-mode": "cors",
-      "sec-fetch-site": "same-origin",
-      "Referer": "https://yesnotarot.org/",
-      "Referrer-Policy": "strict-origin-when-cross-origin"
+      "sec-ch-ua-platform": "\"macOS\""
     },
-    "body": `["${body}",${JSON.stringify(pms)}]`,
+    "referrer": "",
+    "referrerPolicy": "strict-origin-when-cross-origin",
+    "body": JSON.stringify(body),
     "method": "POST"
   });
-  const JSON_TEXT = await res.text();
-  // 正则表达式: 匹配数字后面的内容，直到换行符
-  const regex = /^(\d+):([^\n]+)/gm;
-  // 用正则提取匹配的内容
-  const RES_ARR = []
-  let TEMP_JSON = {};
-  let match;
-  while ((match = regex.exec(JSON_TEXT)) !== null) {
-    TEMP_JSON = JSON.parse(match[2])
-    TEMP_JSON = String(TEMP_JSON.diff ? TEMP_JSON.diff[1] : TEMP_JSON.curr || '')
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    TEMP_JSON && RES_ARR.push(TEMP_JSON)
-  }
-  return new Response(RES_ARR.join(''));
+  const data = await res.json();
+  return new Response(data.choices[0].message.content);
 }
