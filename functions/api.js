@@ -20,15 +20,9 @@ export async function onRequestPost({ request }) {
   }
   const res = await fetch("https://nas-ai.4ce.cn/v1/chat/completions", {
     "headers": {
-      "accept": "application/json, text/event-stream",
       "authorization": "Bearer sk-L8W2WtnCtdwG6nctF975D0E770144dE5Be3123Fa16720a03",
-      "content-type": "application/json",
-      "sec-ch-ua": "\"Not A(Brand\";v=\"8\", \"Chromium\";v=\"132\", \"Google Chrome\";v=\"132\"",
-      "sec-ch-ua-mobile": "?0",
-      "sec-ch-ua-platform": "\"macOS\""
+      "content-type": "application/json"
     },
-    "referrer": "",
-    "referrerPolicy": "strict-origin-when-cross-origin",
     "body": JSON.stringify(body),
     "method": "POST"
   });
