@@ -23,4 +23,4 @@
 
 ### 具体部署步骤详情
 
-https://www.vvhan.com/article/kaiyuan-tarot.html
+https://www.vvhan.com/article/kaiyuan-tarot
