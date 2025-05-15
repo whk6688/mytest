@@ -23,5 +23,5 @@ export async function onRequestPost({ request }) {
   });
   const data = await res.json();
   alert(data)
-  return new Response(data['candidates'][0]['content']['parts'][0]['text']);
+  return new Response("我不知道");
 }
