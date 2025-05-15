@@ -1,5 +1,5 @@
 <template>
-  <Header title="塔罗牌占卜" desc="仅供娱乐" />
+  <Header title="塔罗牌占卜" desc="" />
   <main><RouterView /></main>
   <Footer />
 </template>
