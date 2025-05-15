@@ -14,14 +14,7 @@ export async function onRequestPost({ request }) {
                 ]
             },
 
-        ],
-	"stream": false,
-	"temperature": 0,
-	"presence_penalty": 0,
-    "frequency_penalty": 0,
-    "top_p": 1
-	
-	
+        ]	
 	
   }
   const res = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyAY9YffF1UY4k48_Fs6sbCm7BYJPG25OSE", {
@@ -29,5 +22,6 @@ export async function onRequestPost({ request }) {
     "method": "POST"
   });
   const data = await res.json();
+  alert(data)
   return new Response(data['candidates'][0]['content']['parts'][0]['text']);
 }
