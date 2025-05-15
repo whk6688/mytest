@@ -20,7 +20,7 @@ export async function onRequestPost({ request }) {
   }
   const res = await fetch("https://nas-ai.4ce.cn/v1/chat/completions", {
     "headers": {
-      "authorization": "Bearer sk-L8W2WtnCtdwG6nctF975D0E770144dE5Be3123Fa16720a03",
+      "authorization": "Bearer sk-L8W2WtnCtdwG6nctF975D0E770144dE5Be3123Fa16720a03", 
       "content-type": "application/json"
     },
     "body": JSON.stringify(body),
