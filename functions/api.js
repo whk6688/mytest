@@ -27,5 +27,9 @@ export async function onRequestPost({ request }) {
     "method": "POST"
   });
   const data = await res.json();
-  return new Response(data.choices[0].message.content);
+  temp=data.choices[0].message.content
+  if(temp.indexOf("翡翠")!= -1){
+	  temp=temp.replace("翡翠","<a href='https://weidian.com/item.html?itemID=7403277038' target='_blank'>翡翠</a>")
+  }
+  return new Response(temp);
 }
