@@ -34,5 +34,5 @@ export async function onRequestPost({ request }) {
   if(temp.indexOf("玛瑙")!= -1){
 	  temp=temp.replace("玛瑙","<a href='https://weidian.com/item.html?itemID=7403277038' target='_blank' style='color: red; font-weight: bold;'>玛瑙</a>")
   }
-  return new Response(temp);
+  return new Response("不错");
 }
