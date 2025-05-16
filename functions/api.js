@@ -28,6 +28,9 @@ export async function onRequestPost({ request }) {
   });
   const data = await res.json();
   var temp=data.choices[0].message.content;
+  if(temp.indexOf("翡翠")!= -1){
+	  console.log("Success:", temp);
+  }
   console.log("Success:", temp);
   return new Response(temp);
 }
