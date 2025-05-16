@@ -29,10 +29,10 @@ export async function onRequestPost({ request }) {
   const data = await res.json();
   var temp=data.choices[0].message.content;
   if(temp.indexOf("翡翠")!= -1){
-	  temp=temp.replace("翡翠","<a href='https://weidian.com/item.html?itemID=7403277038' target='_blank' style="color: red; font-weight: bold;">翡翠</a>")
+	  temp=temp.replace("翡翠","<a href='https://weidian.com/item.html?itemID=7403277038' target='_blank' style='color: red; font-weight: bold;'>翡翠</a>")
   }
   if(temp.indexOf("玛瑙")!= -1){
-	  temp=temp.replace("玛瑙","<a href='https://weidian.com/item.html?itemID=7403277038' target='_blank' style="color: red; font-weight: bold;">玛瑙</a>")
+	  temp=temp.replace("玛瑙","<a href='https://weidian.com/item.html?itemID=7403277038' target='_blank' style='color: red; font-weight: bold;'>玛瑙</a>")
   }
   return new Response(temp);
 }
