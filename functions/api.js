@@ -28,6 +28,6 @@ export async function onRequestPost({ request }) {
   });
   const data = await res.json();
   var temp=data.choices[0].message.content
-  alert(temp)
+  alert("111");
   return new Response(temp);
 }
