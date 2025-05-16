@@ -27,7 +27,7 @@ export async function onRequestPost({ request }) {
     "method": "POST"
   });
   const data = await res.json();
-  var temp=data.choices[0].message.content
+  var temp=data.choices[0].message.content;
   console.log("Success:", temp);
   return new Response(temp);
 }
