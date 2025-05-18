@@ -19,7 +19,7 @@
       </div>
       <Alert class="mt-4" v-if="resStatus">
         <AlertTitle>塔罗牌解析：</AlertTitle>
-        <AlertDescription><p ref="typedText"  style="height:100px">uuuu</p></AlertDescription>
+        <AlertDescription><p ref="typedText"  style="height:100px"></p></AlertDescription>
       </Alert>
       <Button class="mt-4 ml-auto block w-max" @click="resetFn">重新开始</Button>
     </div>
