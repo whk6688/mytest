@@ -19,7 +19,7 @@
       </div>
       <Alert class="mt-4" v-if="resStatus">
         <AlertTitle>塔罗牌解析：</AlertTitle>
-        <AlertDescription><p class="[&>p]:indent-8 [&>p]:pt-2"  style="height:100px">yyy</p></AlertDescription>
+        <AlertDescription><p class="[&>p]:indent-8 [&>p]:pt-2" ref="typedText"  style="height:100px"></p></AlertDescription>
       </Alert>
       <Button class="mt-4 ml-auto block w-max" @click="resetFn">重新开始</Button>
     </div>
@@ -73,10 +73,10 @@ const getRes = async () => {
 // 渲染后的 HTML 内容
 const typedText = ref<HTMLParagraphElement>()
 const renderRES = async (md: string) => {
-  //console.log(md)
-  const renderedMarkdown = await marked.parse(md)
+  console.log(md)
+  //const renderedMarkdown = await marked.parse(md)
   //console.log(renderedMarkdown)
-  new Typed(typedText.value, { strings: [renderedMarkdown], typeSpeed: 16, showCursor: false })
+  new Typed(typedText.value, { strings: ["hh"], typeSpeed: 16, showCursor: false })
 }
 
 // 重置
