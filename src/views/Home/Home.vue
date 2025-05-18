@@ -61,19 +61,21 @@ const getRes = async () => {
   loadingStatus.value = true
   selectCardArr.value = selectCardArr.value.map((i) => ({ no: i, isReversed: Math.random() > 0.5 }))
   vh.showLoading()
-  const res = await fetch('/api', { method: 'POST', body: JSON.stringify({ text: textValue.value, pms: selectCardArr.value }) })
+  //const res = await fetch('/api', { method: 'POST', body: JSON.stringify({ text: textValue.value, pms: selectCardArr.value }) })
   vh.hideLoading()
   resStatus.value = true
-  const resText = await res.text()
+  //const resText = await res.text()
+  const resText = "不错"
+  console.log(resText)
   renderRES(resText)
 }
 
 // 渲染后的 HTML 内容
 const typedText = ref<HTMLParagraphElement>()
 const renderRES = async (md: string) => {
-  console.log(md)
+  //console.log(md)
   const renderedMarkdown = await marked.parse(md)
-  console.log(renderedMarkdown)
+  //console.log(renderedMarkdown)
   new Typed(typedText.value, { strings: [renderedMarkdown], typeSpeed: 16, showCursor: false })
 }
 
