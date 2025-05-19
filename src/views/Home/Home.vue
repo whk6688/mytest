@@ -75,8 +75,10 @@ const typedText = ref<HTMLParagraphElement>()
 const renderRES = async (md: string) => {
   console.log(md)
   //const renderedMarkdown = await marked.parse(md)
-  //console.log(renderedMarkdown)
+  console.log("0k")
   new Typed(typedText.value, { strings: ["hh"], typeSpeed: 16, showCursor: false })
+  typedText.value.innerText =md
+  
 }
 
 // 重置
