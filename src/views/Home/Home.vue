@@ -68,7 +68,9 @@ const getRes = async () => {
   const resText = "不错"
   console.log(resText)
   //renderRES(resText)
-  document.getElementById('typedText').innerHTML= resText
+  if (document.getElementById('typedText')){
+	document.getElementById('typedText').innerHTML= resText
+  }
 }
 
 // 渲染后的 HTML 内容
