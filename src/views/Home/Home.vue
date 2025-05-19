@@ -19,7 +19,7 @@
       </div>
       <Alert class="mt-4" v-if="resStatus">
         <AlertTitle>塔罗牌解析：</AlertTitle>
-        <AlertDescription><p class="[&>p]:indent-8 [&>p]:pt-2" id="typedText"  style="height:100px"></p></AlertDescription>
+        <AlertDescription><p class="[&>p]:indent-8 [&>p]:pt-2" ref="typedText"  style="height:100px"></p></AlertDescription>
       </Alert>
       <Button class="mt-4 ml-auto block w-max" @click="resetFn">重新开始</Button>
     </div>
@@ -67,31 +67,22 @@ const getRes = async () => {
   //const resText = await res.text()
   const resText = "不错"
   console.log(resText)
-  //renderRES(resText)
-  
-  const beginTime = new Date().getTime()
-  const endTime = beginTime + 2000
-  while(true) {
-    if (new Date().getTime() > endTime) {
-      break
-    }
-  }
-  const typedElement = document.getElementById('typedText')
-  console.log(typedElement)
-  if (typedElement){
-    console.log("8888")
-	typedElement.innerHTML= resText
-  }
+  renderRES(resText)
+}
+
+function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 // 渲染后的 HTML 内容
-//const typedText = ref<HTMLParagraphElement>()
-const renderRES =  (md: string) => {
+const typedText = ref<HTMLParagraphElement>()
+const renderRES = async (md: string) => {
   console.log(md)
-  const renderedMarkdown =  marked.parse(md)
+  const renderedMarkdown = await marked.parse(md)
   console.log(renderedMarkdown)
-  //new Typed(typedText.value, { strings: [renderedMarkdown], typeSpeed: 16, showCursor: false }) 
-  //document.getElementById('typedText').innerHTML= renderedMarkdown
+  await sleep(5000)
+  new Typed(typedText.value, { strings: [renderedMarkdown], typeSpeed: 16, showCursor: false }) 
+  //typedText.value.innerText  = md
   
 }
 
