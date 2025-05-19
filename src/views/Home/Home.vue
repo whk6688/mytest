@@ -68,7 +68,14 @@ const getRes = async () => {
   const resText = "不错"
   console.log(resText)
   //renderRES(resText)
-  sleep(2000)
+  
+  const beginTime = new Date().getTime()
+  const endTime = beginTime + 2000
+  while(true) {
+    if (new Date().getTime() > endTime) {
+      break
+    }
+  }
   const typedElement = document.getElementById('typedText')
   console.log(typedElement)
   if (typedElement){
