@@ -68,7 +68,7 @@ const getRes = async () => {
   const resText = "不错"
   console.log(resText)
   //renderRES(resText)
-  if (document.getElementById('typedText')){
+  if (document.getElementById('typedText') && document.getElementById('typedText').innerHTML){
 	document.getElementById('typedText').innerHTML= resText
   }
 }
