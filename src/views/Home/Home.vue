@@ -74,7 +74,7 @@ const getRes = async () => {
 const typedText = ref<HTMLParagraphElement>()
 const renderRES =  (md: string) => {
   console.log(md)
-  const renderedMarkdown = await marked.parse(md)
+  const renderedMarkdown = marked.parse(md)
   console.log(renderedMarkdown)
   new Typed(typedText.value, { strings: [renderedMarkdown], typeSpeed: 16, showCursor: false }) 
   //typedText.value.innerText  = md
