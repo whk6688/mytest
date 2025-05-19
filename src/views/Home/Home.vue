@@ -77,7 +77,7 @@ const renderRES = async (md: string) => {
   //const renderedMarkdown = await marked.parse(md)
   console.log("0k")
   //new Typed(typedText.value, { strings: ["hh"], typeSpeed: 16, showCursor: false })
-  typedText.value = md
+  typedText.value.innerText  = md
   
 }
 
