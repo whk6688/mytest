@@ -75,7 +75,7 @@ const typedText = ref<HTMLParagraphElement>()
 const renderRES = async (md: string) => {
   console.log(md)
   //const renderedMarkdown = await marked.parse(md)
-  console.log(renderedMarkdown)
+  //console.log(renderedMarkdown)
   new Typed(typedText.value, { strings: ["<p>不错</p>"], typeSpeed: 16, showCursor: false }) 
   //typedText.value.innerText  = md
   
