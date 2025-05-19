@@ -67,7 +67,8 @@ const getRes = async () => {
   //const resText = await res.text()
   const resText = "不错"
   console.log(resText)
-  renderRES(resText)
+  //renderRES(resText)
+  document.getElementById('typedText').innerHTML= resText
 }
 
 // 渲染后的 HTML 内容
@@ -77,7 +78,7 @@ const renderRES =  (md: string) => {
   const renderedMarkdown =  marked.parse(md)
   console.log(renderedMarkdown)
   //new Typed(typedText.value, { strings: [renderedMarkdown], typeSpeed: 16, showCursor: false }) 
-  document.getElementById('typedText').innerHTML= renderedMarkdown
+  //document.getElementById('typedText').innerHTML= renderedMarkdown
   
 }
 
