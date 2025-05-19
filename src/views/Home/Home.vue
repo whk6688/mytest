@@ -70,6 +70,7 @@ const getRes = async () => {
   //renderRES(resText)
   const typedElement = document.getElementById('typedText');
   if (typedElement){
+    console.log("8888")
 	typedElement.innerHTML= resText
   }
 }
