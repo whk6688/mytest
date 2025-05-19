@@ -72,7 +72,7 @@ const getRes = async () => {
 
 // 渲染后的 HTML 内容
 const typedText = ref<HTMLParagraphElement>()
-const renderRES = sync (md: string) => {
+const renderRES =  (md: string) => {
   console.log(md)
   const renderedMarkdown = await marked.parse(md)
   console.log(renderedMarkdown)
