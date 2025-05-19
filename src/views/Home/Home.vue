@@ -68,6 +68,7 @@ const getRes = async () => {
   const resText = "不错"
   console.log(resText)
   //renderRES(resText)
+  sleep(2000)
   const typedElement = document.getElementById('typedText')
   console.log(typedElement)
   if (typedElement){
