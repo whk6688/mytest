@@ -77,7 +77,7 @@ const renderRES =  (md: string) => {
   const renderedMarkdown =  marked.parse(md)
   console.log(renderedMarkdown)
   //new Typed(typedText.value, { strings: [renderedMarkdown], typeSpeed: 16, showCursor: false }) 
-  typedText.value.innerText  = md
+  typedText.value?.innerText  = md
   
 }
 
