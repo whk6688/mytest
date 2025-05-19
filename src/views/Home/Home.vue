@@ -65,7 +65,7 @@ const getRes = async () => {
   vh.hideLoading()
   resStatus.value = true
   const resText = await res.text()
-  #const resText = "不错"
+  //const resText = "不错"
   console.log(resText)
   renderRES(resText)
 }
