@@ -19,7 +19,7 @@
       </div>
       <Alert class="mt-4" v-if="resStatus">
         <AlertTitle>塔罗牌解析：</AlertTitle>
-        <AlertDescription><p class="[&>p]:indent-8 [&>p]:pt-2" ref="typedText"  style="height:100px"></p></AlertDescription>
+        <AlertDescription><p class="[&>p]:indent-8 [&>p]:pt-2" ref="typedText"></p></AlertDescription>
       </Alert>
       <Button class="mt-4 ml-auto block w-max" @click="resetFn">重新开始</Button>
     </div>
@@ -66,7 +66,7 @@ const getRes = async () => {
   resStatus.value = true
   const resText = await res.text()
   //const resText = "不错"
-  console.log(resText)
+  //console.log(resText)
   renderRES(resText)
 }
 
@@ -77,10 +77,10 @@ function sleep(ms: number): Promise<void> {
 // 渲染后的 HTML 内容
 const typedText = ref<HTMLParagraphElement>()
 const renderRES = async (md: string) => {
-  console.log(md)
+  //console.log(md)
   const renderedMarkdown = await marked.parse(md)
-  console.log(renderedMarkdown)
-  await sleep(3000)
+  //console.log(renderedMarkdown)
+  //await sleep(3000)
   new Typed(typedText.value, { strings: [renderedMarkdown], typeSpeed: 16, showCursor: false }) 
   //typedText.value.innerText  = md
   
